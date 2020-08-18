@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -8,7 +7,7 @@
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.737852427789-3f156cf15a4k4566p5dioh1vv98uj30s</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>737852427789-agqn5ams7p8pavketmc12o7cm9n3gekj.apps.googleusercontent.com</string>
+	<string>737852427789-gti7oalu3i82v45of6ihvj1cs1vl2b9l.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyClLr1LiIRlb8xx-82QzvwD3S3ftI8lh9g</string>
 	<key>GCM_SENDER_ID</key>
