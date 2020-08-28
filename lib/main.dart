@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_time_tracker_flutter_course/app/landing_page.dart';
+import 'package:my_time_tracker_flutter_course/services/auth.dart';
+import 'services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'survices/auth.dart';
-
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_time_tracker_flutter_course/survices/auth.dart';
+import 'package:my_time_tracker_flutter_course/services/auth.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({this.auth});
+  HomePage({@required this.auth});
   final AuthBase auth;
 
   Future<void> _signOut() async {
@@ -17,12 +17,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('home Page'),
+        title: Text('Home Page'),
         actions: <Widget>[
           FlatButton(
+            child: Text(
+              'Logout',
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.white,
+              ),
+            ),
             onPressed: _signOut,
-            child: (Text('Logout')),
-          )
+          ),
         ],
       ),
     );
