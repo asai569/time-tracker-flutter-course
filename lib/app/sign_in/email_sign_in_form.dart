@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_time_tracker_flutter_course/common_widgets/form_submit_button.dart';
+import 'package:my_time_tracker_flutter_course/common_widgets/platform_alert_dialog.dart';
+import 'package:my_time_tracker_flutter_course/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:my_time_tracker_flutter_course/services/auth.dart';
+import 'package:my_time_tracker_flutter_course/services/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'validators.dart';
 
 enum EmailSignInFormType { signIn, register }
 
 class EmailSignInForm extends StatefulWidget with EmailAndPasswordValaidators {
-  EmailSignInForm({@required this.auth});
-  final AuthBase auth;
   @override
   _EmailSignInFormState createState() => _EmailSignInFormState();
 }
@@ -31,30 +34,19 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       _isLoading = true;
     });
     try {
+      final auth = Provider.of<AuthBase>(context);
+
       if (_formType == EmailSignInFormType.signIn) {
-        await widget.auth.signInWithEmailAndPassword(_email, _password);
+        await auth.signInWithEmailAndPassword(_email, _password);
       } else {
-        await widget.auth.createUserWithEmailAndPassword(_email, _password);
+        await auth.createUserWithEmailAndPassword(_email, _password);
       }
       Navigator.of(context).pop();
-    } catch (e) {
-      print(e.toString());
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('sign in failed'),
-            content: Text(e.toString()),
-            actions: [
-              FlatButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('ok'))
-            ],
-          );
-        },
-      );
+    } on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: 'sign in failed',
+        exception: e,
+      ).show(context);
     } finally {
       setState(() {
         _isLoading = false;

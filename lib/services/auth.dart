@@ -55,7 +55,7 @@ class Auth implements AuthBase {
   Future<User> signInWithEmailAndPassword(String email, String password) async {
     try {
       final authResult = await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+          email: email.trim(), password: password);
       return _userFromFirebase(authResult.user);
     } catch (e) {
       authProblems errorType;

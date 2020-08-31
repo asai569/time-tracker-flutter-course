@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_time_tracker_flutter_course/app/landing_page.dart';
 import 'package:my_time_tracker_flutter_course/services/auth.dart';
+import 'package:provider/provider.dart';
 import 'services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -14,13 +15,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Time Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
-      home: LandingPage(
-        auth: Auth(),
+    return Provider<AuthBase>(
+      create: (context) => Auth(),
+      child: MaterialApp(
+        title: 'Time Tracker',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+        ),
+        home: LandingPage(),
       ),
     );
   }
