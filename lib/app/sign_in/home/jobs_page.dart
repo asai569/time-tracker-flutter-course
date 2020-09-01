@@ -1,9 +1,11 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:my_time_tracker_flutter_course/common_widgets/platform_alert_dialog.dart';
 import 'package:my_time_tracker_flutter_course/services/auth.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class JobsPage extends StatelessWidget {
   Future<void> _signOut(BuildContext context) async {
     try {
       final auth = Provider.of<AuthBase>(context);
@@ -30,7 +32,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Jobs'),
         actions: <Widget>[
           FlatButton(
             child: Text(
@@ -43,6 +45,10 @@ class HomePage extends StatelessWidget {
             onPressed: () => _confirmSignOut(context),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.add),
       ),
     );
   }
